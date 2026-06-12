@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Mailbox 💌 Until Hettie</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💌</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1 class="site-title">The Mailbox 💌</h1>
+    <nav class="nav">
+      <a href="index.html">⏳ countdown</a>
+      <a href="garden.html">🌷 garden</a>
+      <a href="mailbox.html" class="active">💌 mailbox</a>
+      <a href="treasure.html" class="lock" title="locked… for now">🔒</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <p class="muted">one sealed letter a day. no peeking ahead 😌</p>
+
+      <div class="envelope" id="envelope">
+        ✉️
+        <span class="stamp">🏵️<button class="hh" data-hh="h5" aria-label="a tiny secret">💗</button></span>
+        <span class="seal"><span class="seal-emoji">🩷</span><button class="hh hidden-until" data-hh="h6" aria-label="a tiny secret">💗</button></span>
+      </div>
+
+      <p class="muted" id="next-letter">a letter is waiting… 👀</p>
+
+      <div id="letter" hidden>
+        <div class="letter-paper">
+          <p id="letter-text"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>letters you've opened 📚</h2>
+      <div id="past-letters"></div>
+    </section>
+  </main>
+
+  <footer>sealed with actual love, not just wax 🩷</footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/notes.js"></script>
+  <script src="js/sync.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/eggs.js"></script>
+  <script src="js/mailbox.js"></script>
+</body>
+</html>

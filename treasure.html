@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>??? 🔒 Until Hettie</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗝️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1 class="site-title">🗝️</h1>
+    <nav class="nav">
+      <a href="index.html">⏳ countdown</a>
+      <a href="garden.html">🌷 garden</a>
+      <a href="mailbox.html">💌 mailbox</a>
+      <a href="treasure.html" class="lock active">🔒</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card" id="gate">
+      <div class="gate-lock">🔒</div>
+      <h2>something precious is locked away…</h2>
+      <p class="muted">six hidden hearts hold the riddle.<br>the riddle holds the word.<br>the word opens the lock.</p>
+      <form id="gate-form">
+        <input type="text" id="gate-input" placeholder="speak the magic word…" autocomplete="off" maxlength="20">
+        <button type="submit" class="btn">🗝️</button>
+      </form>
+    </section>
+
+    <section id="treasure-room" hidden>
+      <section class="card">
+        <div class="gate-lock">💝</div>
+        <h2>for Hettie Rankin</h2>
+        <div class="treasure-stats" id="treasure-stats"></div>
+        <div class="letter-paper">
+          <p id="treasure-letter"></p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>you found it. of course you did. 💗</footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/notes.js"></script>
+  <script src="js/sync.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/eggs.js"></script>
+  <script src="js/treasure.js"></script>
+</body>
+</html>

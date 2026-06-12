@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Until Hettie 💗</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💗</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1 class="site-title">Until Hettie 💗</h1>
+    <nav class="nav">
+      <a href="index.html" class="active">⏳ countdown</a>
+      <a href="garden.html">🌷 garden</a>
+      <a href="mailbox.html">💌 mailbox</a>
+      <a href="treasure.html" class="lock" title="locked… for now">🔒</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="mascot" id="mascot">💗</div>
+      <div>
+        <button class="hh" data-hh="h1" aria-label="a tiny secret">💗</button>
+      </div>
+      <p class="caption swap" id="caption">counting the seconds…</p>
+
+      <div class="cd-grid">
+        <div class="cd-cell"><span class="cd-num" id="cd-days">–</span><span class="cd-label">days</span></div>
+        <div class="cd-cell"><span class="cd-num" id="cd-hours">–</span><span class="cd-label">hours</span></div>
+        <div class="cd-cell"><span class="cd-num" id="cd-mins">–</span><span class="cd-label">minutes</span></div>
+        <div class="cd-cell"><span class="cd-num" id="cd-secs">–</span><span class="cd-label">seconds</span></div>
+      </div>
+
+      <div class="progress">
+        <div id="progress-hearts">🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍</div>
+        <p class="muted" id="progress-label"></p>
+      </div>
+
+      <div class="milestone" id="milestone" hidden></div>
+
+      <p style="margin-top:18px">
+        <button class="btn" id="change-date">💞 change our date</button>
+      </p>
+    </section>
+
+    <section class="card us-card">
+      <h2>us, so far 🥰</h2>
+      <p class="muted">since the 24th of October, 2024</p>
+      <p id="us-timer">…</p>
+      <p class="muted tiny" id="us-beats"></p>
+    </section>
+  </main>
+
+  <footer>
+    made with an unreasonable amount of love, for Hettie Rankin
+    <button class="hh" data-hh="h2" aria-label="a tiny secret">💗</button>
+    <br><span class="tiny">🤫 this site keeps secrets — the 💗 button up top is a good place to start</span>
+  </footer>
+
+  <div class="modal-backdrop" id="setter-modal" hidden>
+    <div class="modal">
+      <button class="modal-close" data-close>✕</button>
+      <h2>💞 when do we see each other?</h2>
+      <p class="muted">this updates for both of us, wherever we are</p>
+      <form id="setter-form" style="margin-top:14px; display:grid; gap:12px; justify-items:center">
+        <input type="datetime-local" id="date-input" required>
+        <button type="submit" class="btn" id="setter-save">save for both of us 💌</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/notes.js"></script>
+  <script src="js/sync.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/eggs.js"></script>
+  <script src="js/countdown.js"></script>
+</body>
+</html>
