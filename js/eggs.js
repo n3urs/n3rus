@@ -77,14 +77,18 @@ const Eggs = (() => {
     });
 
     document.getElementById("hunt-reset").addEventListener("click", () => {
-      localStorage.removeItem(LS.hearts);
-      localStorage.removeItem(LS.treasure);
+      [
+        LS.hearts, LS.treasure,
+        "n3rus.medals", "n3rus.summoned", "n3rus.secretRooms",
+        "n3rus.arcadeBest", "n3rus.catsSummoned", "n3rus.fortuneDay",
+      ].forEach((k) => localStorage.removeItem(k));
       document.querySelectorAll(".hh").forEach((el) => el.classList.remove("found"));
       const lock = document.querySelector(".nav .lock");
       if (lock) { lock.textContent = "🔒"; lock.title = "locked… for now"; }
+      document.querySelector(".nav .medal-pill")?.remove();
       updateChip();
       openSecrets();
-      FX.toast("six hearts re-hidden, the lock re-locked — happy hunting 💗");
+      FX.toast("hearts re-hidden, medals melted down, lock re-locked — happy hunting 💗");
     });
 
     document.getElementById("preview-celebrate").addEventListener("click", () => {
@@ -273,7 +277,7 @@ const Eggs = (() => {
     schedulePaw();
   }
   function schedulePaw() {
-    setTimeout(pawWander, 35000 + Math.random() * 45000);
+    setTimeout(pawWander, 10000 + Math.random() * 15000);
   }
 
   // ---------- 🌙 night-only moon → goodnight page ----------
