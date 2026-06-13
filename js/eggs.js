@@ -80,7 +80,8 @@ const Eggs = (() => {
       [
         LS.hearts, LS.treasure,
         "n3rus.medals", "n3rus.summoned", "n3rus.secretRooms",
-        "n3rus.arcadeBest", "n3rus.catsSummoned", "n3rus.fortuneDay",
+        "n3rus.arcadeBest.easy", "n3rus.arcadeBest.medium", "n3rus.arcadeBest.hard",
+        "n3rus.catsSummoned", "n3rus.fortuneDay",
       ].forEach((k) => localStorage.removeItem(k));
       document.querySelectorAll(".hh").forEach((el) => el.classList.remove("found"));
       const lock = document.querySelector(".nav .lock");

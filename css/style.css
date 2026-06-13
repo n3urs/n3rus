@@ -903,6 +903,21 @@ body.night .nav a.active { background: #ffffff44; }
 
 .game-overlay[hidden] { display: none; }
 
+.diff-picker { display: flex; gap: .5rem; justify-content: center; margin: .4rem 0 .6rem; }
+.diff-btn {
+  padding: .3rem .9rem;
+  border-radius: 999px;
+  border: 2px solid var(--deep);
+  background: transparent;
+  color: var(--deep);
+  font-family: inherit;
+  font-size: .82rem;
+  cursor: pointer;
+  transition: background .18s, color .18s;
+}
+.diff-btn:hover { background: var(--blush); }
+.diff-btn.active { background: var(--deep); color: #fff; font-weight: 700; }
+
 /* ---------- fortune cookie ---------- */
 .cookie {
   font-size: 4.5rem;

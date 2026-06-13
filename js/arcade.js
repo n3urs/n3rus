@@ -1,7 +1,14 @@
 // 🎮 Heart Catcher: move the basket, catch hearts, three misses = game over.
 // Scores feed the medal cabinet (15 / 30 / 50).
 (() => {
-  const LS_BEST = "n3rus.arcadeBest";
+  const DIFF = {
+    easy:   { spawnBase: 900, spawnFloor: 380, spawnRamp: 9,  vBase: 1.6, vRand: 1.2, vRamp: 0.035, lives: 3 },
+    medium: { spawnBase: 650, spawnFloor: 260, spawnRamp: 10, vBase: 2.4, vRand: 1.4, vRamp: 0.06,  lives: 3 },
+    hard:   { spawnBase: 450, spawnFloor: 160, spawnRamp: 12, vBase: 3.5, vRand: 1.8, vRamp: 0.09,  lives: 2 },
+  };
+
+  let difficulty = "easy";
+  const bestKey = () => `n3rus.arcadeBest.${difficulty}`;
 
   document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("game");
@@ -12,12 +19,22 @@
     let basketX = W / 2, hearts = [], score = 0, lives = 3;
     let running = false, lastSpawn = 0, raf = null;
 
-    function best() { return parseInt(localStorage.getItem(LS_BEST) || "0", 10); }
+    function best() { return parseInt(localStorage.getItem(bestKey()) || "0", 10); }
     function showBest() {
+      const b = best();
       document.getElementById("game-best").textContent =
-        best() ? `personal best: ${best()} 💗` : "";
+        b ? `personal best (${difficulty}): ${b} 💗` : "";
     }
     showBest();
+
+    document.querySelectorAll(".diff-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (running) return;
+        difficulty = btn.dataset.diff;
+        document.querySelectorAll(".diff-btn").forEach((b) => b.classList.toggle("active", b === btn));
+        showBest();
+      });
+    });
 
     function moveTo(clientX) {
       const r = canvas.getBoundingClientRect();
@@ -30,14 +47,15 @@
     }, { passive: false });
 
     function spawn(now) {
-      const interval = Math.max(380, 900 - score * 9);
+      const d = DIFF[difficulty];
+      const interval = Math.max(d.spawnFloor, d.spawnBase - score * d.spawnRamp);
       if (now - lastSpawn < interval) return;
       lastSpawn = now;
       hearts.push({
         x: 24 + Math.random() * (W - 48),
         y: -20,
-        v: 1.6 + Math.random() * 1.2 + score * 0.035,
-        glyph: Math.random() < 0.12 ? "💖" : "💗", // 💖 is worth 3!
+        v: d.vBase + Math.random() * d.vRand + score * d.vRamp,
+        glyph: Math.random() < 0.12 ? "💖" : "💗",
       });
     }
 
@@ -46,7 +64,6 @@
       spawn(now);
       ctx.clearRect(0, 0, W, H);
 
-      // basket
       ctx.font = "38px serif";
       ctx.textAlign = "center";
       ctx.fillText("🧺", basketX, H - 14);
@@ -76,7 +93,7 @@
       ctx.fillStyle = "#d6336c";
       ctx.fillText(`score ${score}`, 12, 24);
       ctx.textAlign = "right";
-      ctx.fillText("💗".repeat(lives) + "🩶".repeat(3 - lives), W - 12, 24);
+      ctx.fillText("💗".repeat(lives) + "🩶".repeat(DIFF[difficulty].lives - lives), W - 12, 24);
       ctx.fillStyle = "#000";
 
       raf = requestAnimationFrame(step);
@@ -85,7 +102,7 @@
     function gameOver() {
       running = false;
       cancelAnimationFrame(raf);
-      if (score > best()) localStorage.setItem(LS_BEST, String(score));
+      if (score > best()) localStorage.setItem(bestKey(), String(score));
       showBest();
       document.getElementById("game-title").textContent =
         score >= 50 ? `${score}!! GOLD!! 🥇` : score >= 30 ? `${score} — silver! 🥈` :
@@ -97,7 +114,8 @@
     }
 
     document.getElementById("game-start").addEventListener("click", () => {
-      hearts = []; score = 0; lives = 3; lastSpawn = 0;
+      const d = DIFF[difficulty];
+      hearts = []; score = 0; lives = d.lives; lastSpawn = 0;
       overlay.hidden = true;
       running = true;
       raf = requestAnimationFrame(step);
