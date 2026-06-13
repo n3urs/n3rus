@@ -18,7 +18,7 @@ const NOTES = {
   // Notes revealed by the 6 hidden hearts. Keep them short and sweet.
   hiddenHearts: {
     h1: "I knew I loved you when you drove me around to watch me fail at wing foiling 🏄",
-    h2: "My favourite thing about you is your lovely big, round, delumptuous… curls 😏",
+    h2: "My favourite thing about you is your lovely big, round, velumptuous… curls 😏",
     h3: "I still think about the day we got caught doing naughty things in public 🙈",
     h4: "My favourite sound in the whole world? That giggle you do when I tickle you. I'd play it on repeat if I could 🥰",
     h5: "I can't wait to celebrate your birthday with you — I'm going to make it your best one ever 🎂",
