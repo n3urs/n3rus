@@ -9,20 +9,20 @@ const NOTES = {
     "every second of this is worth it for you",
     "counting down like it's Christmas, but better",
     "the kettle is already on for when you get here ☕",
-    "[PLACEHOLDER — an inside joke of yours goes here]",
-    "[PLACEHOLDER — another little line just for Hettie]",
+    "i love the way you yawn 🥱💗",
+    "me and Magnus really miss you 🥺",
     "missing you is my cardio 🏃💨",
     "somewhere, Biscuit is counting too 🐴",
   ],
 
   // Notes revealed by the 6 hidden hearts. Keep them short and sweet.
   hiddenHearts: {
-    h1: "[PLACEHOLDER #1 — e.g. 'I knew I loved you when…']",
-    h2: "[PLACEHOLDER #2 — e.g. 'My favourite thing about you is…']",
-    h3: "[PLACEHOLDER #3 — e.g. 'I still think about the day we…']",
-    h4: "[PLACEHOLDER #4 — e.g. 'You make even boring days feel…']",
-    h5: "[PLACEHOLDER #5 — e.g. 'I can't wait to … with you']",
-    h6: "[PLACEHOLDER #6 — e.g. 'Forever sounds about right.']",
+    h1: "I knew I loved you when you drove me around to watch me fail at wing foiling 🏄",
+    h2: "My favourite thing about you is your lovely big, round, delumptuous… curls 😏",
+    h3: "I still think about the day we got caught doing naughty things in public 🙈",
+    h4: "My favourite sound in the whole world? That giggle you do when I tickle you. I'd play it on repeat if I could 🥰",
+    h5: "I can't wait to celebrate your birthday with you — I'm going to make it your best one ever 🎂",
+    h6: "You're my best friend in the whole wide world. Can't wait to spend forever with you 💗",
   },
 
   // Cryptic clues for the hearts (shown in the Secrets panel before they're found)
@@ -38,13 +38,19 @@ const NOTES = {
   // One letter unlocks per day at the mailbox. Add as many as you like —
   // they repeat in order once she's read them all.
   dailyLetters: [
-    "[PLACEHOLDER LETTER 1 — a few sentences. Write like you'd text her.]",
-    "[PLACEHOLDER LETTER 2]",
-    "[PLACEHOLDER LETTER 3]",
-    "[PLACEHOLDER LETTER 4]",
-    "[PLACEHOLDER LETTER 5]",
-    "[PLACEHOLDER LETTER 6]",
-    "[PLACEHOLDER LETTER 7]",
+    "counting down the days\nlike a kid before christmas —\nyou're better than gifts 🎁",
+
+    "roses are red,\nviolets are blue,\nBiscuit's a horse,\nand I love you. 🐴\n\n(it rhymed better in my head, but the ending is true)",
+
+    "miles are just numbers,\nmy heart doesn't do maths well —\nit lives where you are 🗺️💗",
+
+    "Egg and Maude and Bee agree,\nMouse and Rosie too:\nof all the humans they have met,\nthe very best is you.\n\n(Biscuit couldn't comment — he had hay to chew)",
+
+    "your yawn, your giggle,\nthe way you say my name — these\nare my favourite songs 🎶",
+
+    "if I had a flower for every time I thought about you…\n\nhonestly, the garden page would have crashed by now 🌷",
+
+    "one day there'll be no countdown,\nno timer left to run,\njust you and me and morning tea\nand all our days as one.\n\n(until then — check the timer. it's less than yesterday 💗)",
   ],
 
   // Shown when all six hearts are found
@@ -56,9 +62,17 @@ const NOTES = {
 
   // The grand finale on the treasure page. Make this one count. 💍 (jk… unless)
   treasureLetter:
-    "[PLACEHOLDER — THE BIG ONE. A proper love letter from Oscar to Hettie. " +
-    "This is what the whole treasure hunt leads to, so give it your best. " +
-    "A few paragraphs. Sign it.]",
+    "Ever since I first saw you at that freshers fair, I knew I wanted to make you mine. " +
+    "Luckily, it didn't take long for us to make that happen — which is good, because it means " +
+    "I've managed to get as much time as possible in with you while I can.\n\n" +
+    "I love that our lives have always been intermingled, all the way from hockey in 2016, " +
+    "to our one year at King's, to meeting again at freshers. I love spending every day with you, " +
+    "and I'm sad whenever I can't spend my day with you.\n\n" +
+    "I love all your family and all your animals. I love hanging out with your mum and dad as well. " +
+    "I love showing you all the random things I'm obsessing over at the time, and I love when you " +
+    "pretend to be interested and watch me do my random autistic things.\n\n" +
+    "I miss you to the moon and back a million times. We can't wait to see you soon.\n\n" +
+    "Lots of love,\nozzie 💗",
 
   // Little surprise lines for typed secret names
   animalLines: {
