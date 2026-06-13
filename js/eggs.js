@@ -38,6 +38,7 @@ const Eggs = (() => {
           </div>
           <p class="muted tiny">psst — you can also just <em>type</em> a magic name anywhere on the page</p>
           <button class="btn ghost small" id="preview-celebrate">🎉 peek at the together-day</button>
+          <button class="btn ghost small" id="hunt-reset">🔄 start the hunt over</button>
         </div>
       </div>
 
@@ -61,6 +62,17 @@ const Eggs = (() => {
       const word = document.getElementById("whisper-input").value.trim().toLowerCase();
       document.getElementById("whisper-input").value = "";
       if (word) triggerCode(word, true);
+    });
+
+    document.getElementById("hunt-reset").addEventListener("click", () => {
+      localStorage.removeItem(LS.hearts);
+      localStorage.removeItem(LS.treasure);
+      document.querySelectorAll(".hh").forEach((el) => el.classList.remove("found"));
+      const lock = document.querySelector(".nav .lock");
+      if (lock) { lock.textContent = "🔒"; lock.title = "locked… for now"; }
+      updateChip();
+      openSecrets();
+      FX.toast("six hearts re-hidden, the lock re-locked — happy hunting 💗");
     });
 
     document.getElementById("preview-celebrate").addEventListener("click", () => {
