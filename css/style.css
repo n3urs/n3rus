@@ -222,7 +222,8 @@ header {
   cursor: pointer;
   font-size: 0.85em;
   opacity: 0.4;
-  padding: 1px;
+  padding: 8px;
+  margin: -6px;
   transition: opacity 0.2s, transform 0.2s;
   filter: saturate(0.7);
 }
