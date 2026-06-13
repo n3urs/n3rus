@@ -74,6 +74,37 @@ const NOTES = {
     "I miss you to the moon and back a million times. We can't wait to see you soon.\n\n" +
     "Lots of love,\nozzie 💗",
 
+  // 🥠 One fortune per day at the mailbox. Edit/add freely.
+  fortunes: [
+    "today you will be yawned at, lovingly 🥱",
+    "a horse is thinking about you right now",
+    "your next cup of tea will be exactly the right temperature",
+    "someone 💗 miles away just smiled thinking about you",
+    "you will pet something fluffy before the day is out",
+    "great curls bring great responsibility",
+    "the countdown is shorter than it was yesterday. it knows.",
+    "a giggle you've been saving will escape at the worst possible moment",
+    "Rosie has judged you today… and you passed",
+    "you are someone's favourite notification",
+    "an egg (the dog) approves of your choices",
+    "tonight's dreams: 80% horses, 20% him",
+    "you will find something you lost — probably a hair clip",
+    "the moon is keeping an eye on both of you tonight",
+    "your laugh will be the best thing someone hears today",
+    "beware: spontaneous happiness approaching from the south",
+    "Maude knows something you don't. she's not telling.",
+    "someone is counting the seconds. literally. there's a website.",
+    "you will be hugged extremely hard in the foreseeable future",
+    "fortune says: text him back, he's being dramatic about it",
+  ],
+
+  // 📿 The locket page. Add image paths (e.g. "photos/us1.jpg") to show real
+  // photos instead of the drawn art. Photos in the repo are public!
+  locket: {
+    caption: "you + me (artist's impression)",
+    photos: [],
+  },
+
   // Little surprise lines for typed secret names
   animalLines: {
     egg: "Egg! 🐶 (the goodest egg)",

@@ -37,6 +37,18 @@ const Eggs = (() => {
             </form>
           </div>
           <p class="muted tiny">psst — you can also just <em>type</em> a magic name anywhere on the page</p>
+          <div class="rumours">
+            <p class="muted">rumours going around…</p>
+            <ul class="clue-list">
+              <li>🐾 something pads softly across the screen sometimes. catch it.</li>
+              <li>🌙 one secret only comes out after bedtime</li>
+              <li>⏳ time cracks if you poke it three times</li>
+              <li>💗 the heart in the title likes being bothered. seven times, to be exact</li>
+              <li>🎮 whisper <em>play</em> if you fancy a game</li>
+              <li>🪩 this site knows how to party, if you say the word</li>
+              <li>🏅 good deeds around here don't go unrewarded</li>
+            </ul>
+          </div>
           <button class="btn ghost small" id="preview-celebrate">🎉 peek at the together-day</button>
           <button class="btn ghost small" id="hunt-reset">🔄 start the hunt over</button>
         </div>
@@ -129,6 +141,8 @@ const Eggs = (() => {
         FX.burst(r.left + r.width / 2, r.top + r.height / 2, isNew ? 26 : 8);
         showNote(NOTES.hiddenHearts[id]);
         updateChip();
+        if (isNew && f.size === 1) Medals.award("first-heart");
+        if (isNew && f.size === ALL_HEARTS.length) Medals.award("all-hearts");
         if (isNew && f.size === ALL_HEARTS.length)
           setTimeout(() => { FX.confetti(4000); openSecrets(); }, 900);
         else if (isNew)
@@ -143,13 +157,17 @@ const Eggs = (() => {
     if (e.target instanceof Element && e.target.matches("input, textarea")) return;
     if (e.key.length !== 1) return;
     buf = (buf + e.key.toLowerCase()).slice(-12);
-    for (const word of [...Object.keys(CONFIG.animals), "hettie", CONFIG.riddleAnswer]) {
+    for (const word of [...Object.keys(CONFIG.animals), "hettie", "play", "disco", "medals", "meow", CONFIG.riddleAnswer]) {
       if (buf.endsWith(word)) { buf = ""; triggerCode(word); break; }
     }
   });
 
   function triggerCode(word, fromWhisper = false) {
     if (word === "hettie") return hettieSurprise();
+    if (word === "play") return location.href = "arcade.html";
+    if (word === "medals") return location.href = "medals.html";
+    if (word === "meow") return location.href = "catcorner.html";
+    if (word === "disco") return discoMode();
     const animal = CONFIG.animals[word];
     if (!animal) {
       if (fromWhisper) FX.toast("hmm… that name isn't magic. yet. 🤔");
@@ -157,6 +175,7 @@ const Eggs = (() => {
     }
     document.getElementById("secrets-modal").hidden = true;
     FX.toast(NOTES.animalLines[word]);
+    Medals.summon(word);
 
     if (word === "egg") hatchEgg();
     else if (word === "mouse") { runner("🐭", { speed: 5 }); setTimeout(() => runner("🐱", { speed: 4.4 }), 600); }
@@ -222,10 +241,95 @@ const Eggs = (() => {
     showNote(NOTES.animalLines.hettie);
   }
 
+  // ---------- 🪩 disco mode ----------
+  let discoTimer = null;
+  function discoMode() {
+    document.body.classList.add("disco");
+    FX.confetti(6000);
+    FX.toast("🪩 DISCO MODE 🪩");
+    Medals.award("disco");
+    clearTimeout(discoTimer);
+    discoTimer = setTimeout(() => document.body.classList.remove("disco"), 15000);
+  }
+
+  // ---------- 🐾 wandering paw print → cat corner ----------
+  function pawWander() {
+    const startY = 20 + Math.random() * 50;
+    const goRight = Math.random() < 0.5;
+    for (let i = 0; i < 9; i++) {
+      setTimeout(() => {
+        const p = document.createElement("button");
+        p.className = "paw";
+        p.textContent = "🐾";
+        const x = goRight ? 4 + i * 11 : 96 - i * 11;
+        p.style.left = x + "vw";
+        p.style.top = startY + Math.sin(i * 0.9) * 6 + "vh";
+        p.style.transform = `rotate(${goRight ? 90 : -90}deg)`;
+        p.addEventListener("click", () => (location.href = "catcorner.html"));
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 3500);
+      }, i * 380);
+    }
+    schedulePaw();
+  }
+  function schedulePaw() {
+    setTimeout(pawWander, 35000 + Math.random() * 45000);
+  }
+
+  // ---------- 🌙 night-only moon → goodnight page ----------
+  function maybeMoon() {
+    const h = new Date().getHours();
+    if (h >= 21 || h < 6) {
+      const m = document.createElement("button");
+      m.className = "moon";
+      m.textContent = "🌙";
+      m.title = "psst…";
+      m.addEventListener("click", () => (location.href = "goodnight.html"));
+      document.body.appendChild(m);
+    }
+  }
+
+  // ---------- ⏳ poke time three times → time machine ----------
+  function bindHourglass() {
+    const hg = document.querySelector(".nav .hg");
+    if (!hg) return;
+    let clicks = 0, timer = null;
+    hg.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      clicks++;
+      hg.classList.remove("crack");
+      void hg.offsetWidth;
+      hg.classList.add("crack");
+      clearTimeout(timer);
+      timer = setTimeout(() => (clicks = 0), 1600);
+      if (clicks >= 3) location.href = "timemachine.html";
+    });
+  }
+
+  // ---------- 💗 bother the title heart seven times → locket ----------
+  function bindTitleHeart() {
+    const th = document.getElementById("title-heart");
+    if (!th) return;
+    let clicks = 0;
+    th.addEventListener("click", () => {
+      clicks++;
+      th.classList.remove("spin");
+      void th.offsetWidth;
+      th.classList.add("spin");
+      if (clicks === 5) FX.toast("it's starting to open… keep going 👀");
+      if (clicks >= 7) location.href = "locket.html";
+    });
+  }
+
   // ---------- boot ----------
   document.addEventListener("DOMContentLoaded", () => {
     injectUI();
     bindHearts();
+    maybeMoon();
+    bindHourglass();
+    bindTitleHeart();
+    schedulePaw();
   });
 
   return { found, treasureOpen, bindHearts, showNote, updateChip };

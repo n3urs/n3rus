@@ -33,7 +33,17 @@ Names, the anniversary and the menagerie are in `js/config.js`.
   anywhere does… things. (On a phone, use the whisper box in the 💗 panel.)
 - Finding all six hearts reveals a riddle; its answer opens the 🔒 page.
 - One letter a day unseals at the mailbox; flowers planted in the garden are
-  kept forever (per device).
+  kept forever (per device). A fortune cookie 🥠 cracks once a day too.
+- **Medal cabinet** (`medals.html`): 17 earnable medals for deeds around the
+  site; a 🏅 appears in the menu after the first one.
+- **Secret rooms & how in**: Cat Corner (catch the wandering 🐾, or type
+  `meow`), Goodnight (click the 🌙 that appears after 9pm), Time Machine
+  (click the nav ⏳ three times), the Locket (click the title 💗 seven times),
+  Heart Catcher arcade (type `play`).
+- Typing `disco` does exactly what you fear. One garden bush contains a
+  hedgehog. The "rumours" list in the 💗 panel hints at all of this.
+- Progress is per-device; "start the hunt over" in the 💗 panel resets hearts
+  and the treasure lock (medals, flowers and letters are keepsakes and stay).
 
 ## Local development
 

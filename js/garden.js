@@ -48,6 +48,29 @@
       save(flowers);
       addFlower(f, true);
       updateCount();
+      if (flowers.length >= 10) Medals.award("gardener");
+      if (flowers.length >= 50) Medals.award("master-gardener");
+    });
+
+    // 🦔 one bush is not like the others. no clue, no reward — just a hedgehog.
+    const bushes = plot.querySelector(".bushes");
+    const hogBush = document.createElement("span");
+    hogBush.className = "hog-bush";
+    hogBush.textContent = "🌳";
+    hogBush.style.cursor = "pointer";
+    bushes.appendChild(hogBush);
+    let hogOut = false;
+    hogBush.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (hogOut) return;
+      hogOut = true;
+      const hog = document.createElement("span");
+      hog.textContent = "🦔";
+      hog.style.cssText = "position:absolute; right:0; bottom:38px; font-size:1.5rem; animation: sprout 0.5s;";
+      bushes.style.position = "relative";
+      bushes.appendChild(hog);
+      setTimeout(() => { hog.textContent = "🦔💤"; }, 1600);
+      setTimeout(() => { hog.remove(); hogOut = false; }, 3000);
     });
 
     // ----- wandering critters -----

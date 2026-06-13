@@ -26,4 +26,8 @@ const CONFIG = {
 
   // Answer to the riddle revealed when all 6 hidden hearts are found
   riddleAnswer: "biscuit",
+
+  // Optional: "YYYY-MM-DD". If set, the time machine shows what % of her
+  // life she's known you. Leave "" to hide that stat.
+  herBirthday: "",
 };

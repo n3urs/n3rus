@@ -13,7 +13,7 @@
   <header>
     <h1 class="site-title">The Mailbox 💌</h1>
     <nav class="nav">
-      <a href="index.html">⏳ countdown</a>
+      <a href="index.html"><span class="hg">⏳</span> countdown</a>
       <a href="garden.html">🌷 garden</a>
       <a href="mailbox.html" class="active">💌 mailbox</a>
       <a href="treasure.html" class="lock" title="locked… for now">🔒</a>
@@ -40,6 +40,13 @@
     </section>
 
     <section class="card">
+      <h2>daily fortune 🥠</h2>
+      <p class="muted tiny">one crack per day. the cookie knows things.</p>
+      <div class="cookie" id="cookie">🥠</div>
+      <div id="fortune" hidden><p class="fortune-slip" id="fortune-text"></p></div>
+    </section>
+
+    <section class="card">
       <h2>letters you've opened 📚</h2>
       <div id="past-letters"></div>
     </section>
@@ -51,6 +58,7 @@
   <script src="js/notes.js"></script>
   <script src="js/sync.js"></script>
   <script src="js/effects.js"></script>
+  <script src="js/medals.js"></script>
   <script src="js/eggs.js"></script>
   <script src="js/mailbox.js"></script>
 </body>

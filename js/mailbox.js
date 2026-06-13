@@ -54,6 +54,31 @@
       FX.burst(r.left + r.width / 2, r.top + r.height / 2, 24);
       showLetter(today);
       renderPast();
+      if (got.length >= 7) Medals.award("bookworm");
+    });
+
+    // ----- 🥠 daily fortune -----
+    const FORTUNE_KEY = "n3rus.fortuneDay";
+    const cookie = document.getElementById("cookie");
+    const crackedToday = localStorage.getItem(FORTUNE_KEY) === String(today);
+
+    function showFortune() {
+      cookie.textContent = "🥠✨";
+      cookie.classList.add("cracked");
+      document.getElementById("fortune-text").textContent =
+        "“" + NOTES.fortunes[((today % NOTES.fortunes.length) + NOTES.fortunes.length) % NOTES.fortunes.length] + "”";
+      document.getElementById("fortune").hidden = false;
+    }
+
+    if (crackedToday) showFortune();
+
+    cookie.addEventListener("click", () => {
+      if (localStorage.getItem(FORTUNE_KEY) === String(today)) return;
+      localStorage.setItem(FORTUNE_KEY, String(today));
+      const r = cookie.getBoundingClientRect();
+      FX.burst(r.left + r.width / 2, r.top + r.height / 2, 14, ["✨", "🥠", "💗"]);
+      showFortune();
+      Medals.award("fortune");
     });
 
     // countdown to tomorrow's letter

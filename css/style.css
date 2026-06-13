@@ -582,3 +582,346 @@ footer {
   .cd-cell { padding: 10px 2px 8px; border-radius: 16px; }
   .heart-chip { top: 8px; right: 8px; padding: 6px 10px; }
 }
+
+/* ---------- medals ---------- */
+.medal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.medal {
+  background: #fff;
+  border: 2px solid var(--blush);
+  border-radius: 18px;
+  padding: 16px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.medal-emoji { font-size: 2.4rem; }
+.medal b { font-family: "Baloo 2", sans-serif; color: var(--deep); font-size: 0.95rem; }
+.medal-how { font-size: 0.72rem; color: #a4688a; }
+.medal-date { font-size: 0.7rem; color: var(--hot); font-weight: 700; }
+.medal.locked { opacity: 0.55; filter: grayscale(0.9); }
+.medal.earned { box-shadow: 0 6px 18px rgba(255, 95, 162, 0.35); animation: medalShine 3s ease-in-out infinite; }
+
+@keyframes medalShine {
+  0%, 100% { transform: none; }
+  50% { transform: translateY(-3px); }
+}
+
+.medal-banner {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-120px);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #fff, var(--blush));
+  border: 3px solid var(--rose);
+  border-radius: 999px;
+  padding: 10px 26px 10px 14px;
+  font-family: "Baloo 2", sans-serif;
+  color: var(--deep);
+  box-shadow: 0 14px 40px rgba(214, 51, 108, 0.4);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.medal-banner.show { transform: translateX(-50%) translateY(0); }
+.medal-banner-emoji { font-size: 2.2rem; animation: wiggle 1s ease-in-out infinite; }
+
+/* ---------- secret triggers ---------- */
+.paw {
+  position: fixed;
+  z-index: 90;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  animation: pawFade 3.5s ease forwards;
+}
+
+@keyframes pawFade {
+  0% { opacity: 0; }
+  15% { opacity: 0.65; }
+  70% { opacity: 0.65; }
+  100% { opacity: 0; }
+}
+
+.moon {
+  position: fixed;
+  top: 64px;
+  left: 16px;
+  z-index: 60;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  filter: drop-shadow(0 0 12px #fff7c0);
+  animation: moonBob 5s ease-in-out infinite;
+}
+
+@keyframes moonBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+#title-heart { display: inline-block; cursor: pointer; }
+#title-heart.spin { animation: heartSpin 0.5s ease; }
+@keyframes heartSpin { to { transform: rotate(360deg) scale(1.25); } }
+
+.hg { display: inline-block; }
+.hg.crack { animation: shakeX 0.3s; }
+
+/* ---------- disco mode ---------- */
+body.disco { animation: discoHue 1.2s linear infinite; }
+@keyframes discoHue { to { filter: hue-rotate(360deg); } }
+body.disco .card { animation: discoBounce 0.5s ease-in-out infinite alternate; }
+@keyframes discoBounce { to { transform: translateY(-8px) rotate(0.6deg); } }
+
+/* ---------- goodnight page ---------- */
+body.night {
+  background:
+    radial-gradient(ellipse at 80% -10%, #4a3a6b 0%, transparent 60%),
+    linear-gradient(180deg, #2e2547 0%, #463358 55%, #6b4a74 100%);
+}
+
+body.night .site-title { color: #ffe3f1; text-shadow: 0 2px 12px #1c1430; }
+body.night footer { color: #cfaed0; }
+body.night .nav a { background: #ffffff22; border-color: #ffffff33; color: #ffe3f1; }
+body.night .nav a.active { background: #ffffff44; }
+
+.night-card {
+  background: #ffffff14;
+  border-color: #ffffff2e;
+  color: #ffe3f1;
+}
+
+.night-card h2 { color: #ffd6e8; margin-top: 14px; }
+.night-card .muted { color: #cfaed0; }
+
+.sky {
+  position: relative;
+  height: 300px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #1c1430, #342752);
+  overflow: hidden;
+}
+
+.sky #constellation { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.9; }
+.big-moon {
+  position: absolute;
+  top: 16px;
+  right: 22px;
+  font-size: 2.6rem;
+  filter: drop-shadow(0 0 16px #fff7c0);
+  animation: moonBob 6s ease-in-out infinite;
+}
+
+.star {
+  position: absolute;
+  color: #fff;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+.shooting-star {
+  position: absolute;
+  font-size: 1.1rem;
+  animation: shoot 1.5s ease-in forwards;
+}
+
+@keyframes shoot {
+  to { transform: translate(120px, 80px); opacity: 0; }
+}
+
+/* ---------- cat corner ---------- */
+.cat-frame {
+  width: min(420px, 90%);
+  min-height: 220px;
+  margin: 14px auto;
+  background: #fff;
+  border: 3px solid var(--blush);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.cat-frame img { width: 100%; display: block; }
+.cat-placeholder { font-size: 4rem; padding: 40px; }
+
+.pet-cat {
+  font-size: 5rem;
+  cursor: pointer;
+  display: inline-block;
+  user-select: none;
+  transition: transform 0.12s;
+}
+
+.pet-cat:active { transform: scale(0.92) rotate(-4deg); }
+
+.purr-meter {
+  width: min(300px, 80%);
+  height: 16px;
+  margin: 10px auto 4px;
+  background: #fff;
+  border: 2px solid var(--blush);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.purr-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--rose), var(--hot));
+  border-radius: 999px;
+  transition: width 0.25s;
+}
+
+/* ---------- time machine ---------- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.stat {
+  background: #fff;
+  border: 2px solid var(--blush);
+  border-radius: 18px;
+  padding: 16px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+}
+
+.stat-emoji { font-size: 1.7rem; }
+.stat b { font-family: "Baloo 2", sans-serif; font-size: 1.25rem; color: var(--hot); }
+.stat span:last-child { font-size: 0.76rem; color: #a4688a; }
+
+/* ---------- locket ---------- */
+.locket-chain { font-size: 1.4rem; letter-spacing: -6px; opacity: 0.5; }
+
+.locket {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  perspective: 800px;
+  margin: 6px 0 14px;
+}
+
+.locket-half {
+  position: relative;
+  width: 140px;
+  height: 150px;
+  transition: transform 1s cubic-bezier(0.34, 1.3, 0.5, 1);
+}
+
+.locket-half.left { transform-origin: right center; }
+.locket-half.right { transform-origin: left center; }
+.locket.open .left { transform: rotateY(-28deg) translateX(-8px); }
+.locket.open .right { transform: rotateY(28deg) translateX(8px); }
+
+.locket-lid {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #ffe9a8, #f7c873, #e8a94f);
+  border: 3px solid #d99a3d;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  transition: opacity 0.7s 0.3s;
+}
+
+.locket.open .locket-lid { opacity: 0; pointer-events: none; }
+
+.locket-inside {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border: 3px solid #e8a94f;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.locket-inside svg, .locket-inside img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- arcade ---------- */
+.game-wrap {
+  position: relative;
+  width: min(360px, 100%);
+  margin: 14px auto;
+}
+
+#game {
+  width: 100%;
+  background: linear-gradient(180deg, #fff5f9, #ffe3ee);
+  border: 3px solid var(--blush);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  touch-action: none;
+}
+
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #fff5f9ee;
+  border-radius: 20px;
+}
+
+.game-overlay[hidden] { display: none; }
+
+/* ---------- fortune cookie ---------- */
+.cookie {
+  font-size: 4.5rem;
+  cursor: pointer;
+  display: inline-block;
+  user-select: none;
+  transition: transform 0.15s;
+}
+
+.cookie:hover { transform: scale(1.08) rotate(-4deg); }
+.cookie.cracked { animation: sprout 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+.fortune-slip {
+  background: #fffdf6;
+  border: 2px dashed #e8c98f;
+  border-radius: 12px;
+  padding: 12px 18px;
+  margin: 12px auto 0;
+  max-width: 420px;
+  font-style: italic;
+  animation: modalIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

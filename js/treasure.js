@@ -16,6 +16,7 @@
         <div><b>${Math.floor(ms / 864e5).toLocaleString()}</b><span>days of us</span></div>
         <div><b>${Math.floor(ms / 36e5).toLocaleString()}</b><span>hours of us</span></div>
         <div><b>∞</b><span>still to come</span></div>`;
+      Medals.award("treasure");
       if (first) {
         FX.confetti(8000);
         for (let i = 0; i < 8; i++)
